@@ -1,0 +1,26 @@
+fakeids=0
+with open ('ranges') as file:
+    ranges=file.read().split(',')
+for rang in ranges:
+    start, end = rang.split('-')
+    start=int(start)
+    end=int(end)
+    for ids in range (start,end +1):
+        lenght=(len(str(ids)))
+        patternlenght= (int(lenght/2))
+        if lenght %2==1:
+            continue
+        else:
+            idss=str(ids)
+            firsthalf=idss[:patternlenght]
+            secondhalf=idss[patternlenght:]
+            if firsthalf==secondhalf:
+                fakeids=fakeids+ids
+            else:
+                continue
+print(fakeids)
+
+                
+
+
+
