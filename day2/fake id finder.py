@@ -1,3 +1,4 @@
+
 fakeids=0
 with open ('ranges') as file:
     ranges=file.read().split(',')
@@ -21,6 +22,5 @@ for rang in ranges:
 print(fakeids)
 
                 
-
 
 
