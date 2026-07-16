@@ -6,7 +6,7 @@ with open ('banks') as file:
         biggest2=-1
         biggest1position=-1 
         for position, battery in enumerate(batteries):
-            if int(battery) > biggest1 and position != len(batteries)-12:
+            if int(battery) > biggest1 and position != len(batteries)-1:
                 biggest1 = int(battery)
                 biggest1position=position       
         for position, battery in enumerate(batteries):
