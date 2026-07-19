@@ -1,0 +1,26 @@
+joltage=0
+
+with open ('banks') as file:
+    banks= file.read().splitlines()
+    for batteries in banks:
+        smallestcurrentposition=-1
+        maximumposition=(len(batteries)-11)
+        capacity=[] 
+        for selection in range(12):
+            biggestcurrent=-1
+            newsmallestposition=-1
+            for position, battery in enumerate(batteries):
+                if maximumposition >position> smallestcurrentposition:
+                    if int(battery) > biggestcurrent:
+                        biggestcurrent=int(battery)
+                        newsmallestposition=position
+            maximumposition+=1
+            capacity.append(int(biggestcurrent))
+            smallestcurrentposition = newsmallestposition
+        total=0 
+        for position,number in enumerate(capacity):
+            multiplier=10**(11-position)  
+            total+=number*multiplier     
+        joltage+=total
+print(joltage)
+    
