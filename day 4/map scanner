@@ -1,0 +1,32 @@
+available=0
+with open ('map') as file:
+    rows= file.read().splitlines()
+    spaces=[]
+    for rowposition, row in enumerate(rows):
+        for columnposition, value in enumerate(row):
+            spaces.append((rowposition,columnposition, value))
+    
+    for currentrow, currentcolumn, currentvalue in spaces:
+        if currentvalue == "@":
+            delta=0
+            for adjacentrow, adjacentcolumn, adjacentvalue in spaces:
+                if adjacentrow == currentrow and adjacentcolumn in (currentcolumn-1,currentcolumn+1):
+                    if adjacentvalue == "@":
+                        delta += 1
+                    else:
+                        continue
+                if adjacentrow == currentrow+1 and adjacentcolumn in (currentcolumn-1,currentcolumn,currentcolumn+1):
+                    if adjacentvalue == "@":
+                        delta += 1
+                    else:
+                        continue
+                if adjacentrow == currentrow-1 and adjacentcolumn in (currentcolumn-1,currentcolumn,currentcolumn+1):
+                    if adjacentvalue == "@":
+                        delta += 1
+                    else:
+                        continue   
+            if delta<4:
+                available += 1               
+        else:
+            continue
+print (available)
